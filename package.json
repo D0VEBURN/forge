@@ -1,0 +1,9 @@
+{
+  "name": "signal-forge-web",
+  "version": "0.5.0-web",
+  "private": true,
+  "description": "GitHub Pages edition of Signal Forge",
+  "scripts": {
+    "serve": "npx serve ."
+  }
+}

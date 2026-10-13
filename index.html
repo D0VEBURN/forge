@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Signal Forge</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="machine-shell">
+    <header class="top-plating">
+      <div class="rail left-rail"><span></span><span></span><span></span></div>
+      <div class="title-module">
+        <div class="micro">BROWSER VISUAL PROCESSING UNIT // SF-WEB</div>
+        <h1>SIGNAL FORGE</h1>
+        <div class="hazard"></div>
+      </div>
+      <div class="status-module">
+        <div class="lamp-row"><i></i><i></i><i></i><i></i></div>
+        <div><b id="systemState">STANDBY</b><small>LOCAL PROCESSING</small></div>
+      </div>
+      <div class="rail right-rail"><span></span><span></span><span></span></div>
+    </header>
+
+    <div class="work-grid">
+      <aside class="panel bank-panel">
+        <div class="panel-head">EFFECT BANK</div>
+        <div class="bank-scroll">
+          <div class="bank-group-title">FILM / CAMERA</div>
+          <button class="fx active" data-fx="filmSoft"><span class="led"></span>SOFT 35</button>
+          <button class="fx" data-fx="disposable"><span class="led"></span>DISPOSABLE</button>
+          <button class="fx" data-fx="super8"><span class="led"></span>SUPER 8</button>
+          <button class="fx" data-fx="dv"><span class="led"></span>DV 2003</button>
+          <div class="bank-group-title">EXPERIMENTAL</div>
+          <button class="fx" data-fx="night"><span class="led"></span>NIGHT VISION</button>
+          <button class="fx" data-fx="dither"><span class="led"></span>1-BIT DITHER</button>
+          <button class="fx" data-fx="crt"><span class="led"></span>CRT</button>
+          <button class="fx" data-fx="receipt"><span class="led"></span>RECEIPT</button>
+          <button class="fx" data-fx="depth"><span class="led"></span>DEPTH MAP</button>
+          <div class="bank-label">SIGNAL / MOTION</div>
+          <button class="fx" data-fx="datamosh"><span class="led"></span>DATAMOSH</button>
+          <button class="fx" data-fx="feedback"><span class="led"></span>FEEDBACK LOOP</button>
+          <button class="fx" data-fx="blob"><span class="led"></span>BLOB TRACKING</button>
+          <button class="fx" data-fx="particleBlob"><span class="led"></span>PARTICLE BLOB</button>
+          <button class="fx" data-fx="fluid"><span class="led"></span>FLUID DISPLACE</button>
+          <button class="fx" data-fx="smoke"><span class="led"></span>SMOKE DISPLACE</button>
+          <button class="fx" data-fx="vhs"><span class="led"></span>RETRO VHS</button>
+          <div class="bank-label">PRINT / Y2K</div>
+          <button class="fx" data-fx="xerox"><span class="led"></span>XEROX</button>
+          <button class="fx" data-fx="halftone"><span class="led"></span>HALFTONE PRINT</button>
+          <button class="fx" data-fx="riso"><span class="led"></span>RISO PRINT</button>
+          <button class="fx" data-fx="pixelSort"><span class="led"></span>PIXEL SORT</button>
+          <div class="bank-label">ARCHIVE / VISION</div>
+          <button class="fx" data-fx="cctv"><span class="led"></span>CCTV</button>
+          <button class="fx" data-fx="infrared"><span class="led"></span>INFRARED</button>
+          <button class="fx" data-fx="thermal"><span class="led"></span>THERMAL</button>
+          <button class="fx" data-fx="edgeGlow"><span class="led"></span>EDGE GLOW</button>
+          <button class="fx" data-fx="ascii"><span class="led"></span>ASCII VIDEO</button>
+          <div class="bank-label">PRINT / DATA</div>
+          <button class="fx" data-fx="fax"><span class="led"></span>FAX MACHINE</button>
+          <button class="fx" data-fx="newspaper"><span class="led"></span>NEWSPAPER</button>
+          <button class="fx" data-fx="scanner"><span class="led"></span>SCANNER BED</button>
+          <button class="fx" data-fx="poster"><span class="led"></span>POSTERIZE</button>
+          <button class="fx" data-fx="jpeg"><span class="led"></span>JPEG DAMAGE</button>
+          <div class="bank-label">FEEDBACK / Y2K</div>
+          <button class="fx" data-fx="rgbFeedback"><span class="led"></span>RGB FEEDBACK</button>
+          <button class="fx" data-fx="recursive"><span class="led"></span>RECURSIVE ZOOM</button>
+          <button class="fx" data-fx="liquid"><span class="led"></span>LIQUID GLASS</button>
+          <button class="fx" data-fx="web04"><span class="led"></span>WEBCAM 2004</button>
+          <button class="fx" data-fx="digiflash"><span class="led"></span>DIGICAM FLASH</button>
+        </div>
+        <div class="small-screen">
+          <div>ACTIVE MODULE</div>
+          <strong id="activeFxLabel">SOFT 35</strong>
+          <small id="depthState">Depth Anything V2 // first use downloads the model once into browser cache.</small>
+        </div>
+      </aside>
+
+      <main class="panel viewer-panel">
+        <div class="panel-head viewer-head">
+          <span>VISUAL MONITOR</span><span id="mediaMeta">NO SIGNAL</span>
+        </div>
+        <div id="dropZone" class="monitor-bezel">
+          <canvas id="canvas" width="1280" height="720"></canvas>
+          <div id="emptyState" class="empty-state">
+            <div class="target-reticle"></div>
+            <strong>NO INPUT SIGNAL</strong>
+            <span>DROP IMAGE / VIDEO HERE</span>
+            <button id="browseBtn">LOAD MEDIA</button>
+          </div>
+          <div class="monitor-overlay"><span>CH A</span><span id="frameReadout">00:00:00</span><span id="previewState">LIVE</span></div>
+        </div>
+        <div class="transport">
+          <button id="rewindBtn">|◀</button>
+          <button id="playBtn">▶</button>
+          <button id="stopBtn">■</button>
+          <input id="seek" type="range" min="0" max="1000" value="0" />
+          <span id="timeReadout">00:00 / 00:00</span>
+        </div>
+      </main>
+
+      <aside class="panel control-panel">
+        <div class="panel-head">MODULE CONTROL</div>
+        <div class="module-screen">
+          <div class="module-title"><span id="controlTitle">SOFT 35</span><i></i></div>
+          <div id="controls"></div>
+        </div>
+        <div class="export-bay">
+          <div class="bay-label">OUTPUT BAY</div>
+          <button id="exportImage">EXPORT PNG</button>
+          <button id="recordVideo">RECORD EFFECTED VIDEO</button>
+          <div class="hint" id="exportHint">Video recording exports WebM in this first build.</div>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="bottom-plating">
+      <div class="port"><span></span><b>INPUT</b></div>
+      <div class="footer-center"><span class="tiny-led"></span> WEBGPU/CANVAS PROCESSING <span class="tiny-led"></span> SINGLE EFFECT MODE <span class="tiny-led"></span> LOCAL INFERENCE</div>
+      <div class="port"><b>OUTPUT</b><span></span></div>
+    </footer>
+  </div>
+
+  <input id="fileInput" type="file" accept="image/*,video/*" hidden />
+  <video id="video" playsinline hidden></video>
+  <img id="image" alt="" hidden />
+  <script src="depth-browser.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
